@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('product_id')->constrained('products')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->boolean('is_paid')->default('false');
+            // $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            // $table->foreignId('product_id')->constrained('products')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->enum('is_paid', [0, 1])->default(0);
             $table->string('payment-receipt')->nullable();
             $table->timestamps();
         });
