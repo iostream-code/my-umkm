@@ -10,8 +10,9 @@
                         <button type="button" class="btn btn-success btn-sm"
                             onclick="window.location='{{ route('edit_store', $store) }}'">Edit</button>
                     </div>
+                    <img class="img-top" src="{{ url('storage/' . $store->picture) }}" alt="">
                     <div class="card-body text-center">
-                        <img class="img-fluid" src="{{ url('storage/store-banner-1.jpg') }}" alt="">
+                        <a class="btn btn-primary" href="{{ route('products') }}">See Products</a>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\Store;
+use App\Models\Cart;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -44,13 +47,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    // public function orders()
-    // {
-    //     return $this->hasMany(Order::class);
-    // }
+    public function stores()
+    {
+        return $this->hasMany(Store::class);
+    }
 
-    // public function stores()
-    // {
-    //     return $this->hasMany(Store::class);
-    // }
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

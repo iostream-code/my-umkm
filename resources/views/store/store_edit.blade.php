@@ -5,9 +5,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Stores') }}</div>
+                    <div class="card-header">{{ __('Store') }}</div>
                     <div class="card-body">
-                        <form action="{{ route('update_store', $store) }}" method="POST">
+                        <form action="{{ route('update_store', $store) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
                             <div class="mb-3">
@@ -17,6 +17,10 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
                                 <input type="email" class="form-control" name="email" value="{{ $store->email }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="picture" class="form-label">Banner</label>
+                                <input type="file" class="form-control" name="picture">
                             </div>
                             <div class="mb-3">
                                 <label for="location" class="form-label">Location</label>

@@ -28,15 +28,21 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Product Route
 Route::get('/products', [ProductController::class, 'products'])->name('products');
+Route::get('/product/create', [ProductController::class, 'createProduct'])->name('create_product');
+Route::post('/product/regist', [ProductController::class, 'registProduct'])->name('regist_product');
+Route::get('/product/{product}', [ProductController::class, 'detailProduct'])->name('detail_product');
+Route::get('/product/{product}/edit', [ProductController::class, 'editProduct'])->name('edit_product');
+Route::patch('/product/{product}/edit/update', [ProductController::class, 'updateProduct'])->name('update_product');
+Route::delete('/product/{product}/delete', [ProductController::class, 'deleteProduct'])->name('delete_product');
 
 // Store Route
 Route::get('/stores', [StoreController::class, 'stores'])->name('stores');
 Route::get('/store/create', [StoreController::class, 'createStore'])->name('create_store');
 Route::post('/store/regist', [StoreController::class, 'registStore'])->name('regist_store');
 Route::get('/store/{store}', [StoreController::class, 'detailStore'])->name('detail_store');
+Route::get('/store/{store}/edit', [StoreController::class, 'editStore'])->name('edit_store');
+Route::patch('/store/{store}/edit/update', [StoreController::class, 'updateStore'])->name('update_store');
 Route::delete('/store/{store}/delete', [StoreController::class, 'deleteStore'])->name('delete_store');
-Route::get('/store/edit/{store}', [StoreController::class, 'editStore'])->name('edit_store');
-Route::patch('/store/edit/{store}/update', [StoreController::class, 'updateStore'])->name('update_store');
 
 // Users Route
 Route::get('/users', [UserController::class, 'users'])->name('users');
