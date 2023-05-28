@@ -26,8 +26,7 @@
                                         <td>{{ $user->role }}</td>
                                         <td>
                                             <div class="d-flex flex-row gap-2">
-
-                                                <form action="" method="GET">
+                                                <form action="{{ route('detail_user', $user) }}" method="GET">
                                                     @csrf
                                                     <button type="submit" class="btn btn-primary btn-sm"><i
                                                             class="bi bi-search"></i></button>

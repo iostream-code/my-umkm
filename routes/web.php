@@ -40,3 +40,4 @@ Route::patch('/store/edit/{store}/update', [StoreController::class, 'updateStore
 
 // Users Route
 Route::get('/users', [UserController::class, 'users'])->name('users');
+Route::get('/user/{user}', [UserController::class, 'detailUser'])->name('detail_user');

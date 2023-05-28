@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('product_id')->constrained('products')->cascadeOnDelete()->cascadeOnUpdate();
-            // $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name');
             $table->string('email')->uniqe();
             $table->string('password');
+            $table->string('picture');
             $table->string('location');
             $table->timestamps();
         });
