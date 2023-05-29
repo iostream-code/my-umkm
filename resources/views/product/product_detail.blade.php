@@ -32,11 +32,11 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-2">
-                                <img src="{{ url('storage/' . $product->image) }}" class="img" alt="" height="150px">
+                            <div class="col-4">
+                                <img src="{{ url('storage/' . $product->image) }}" class="img-fluid img-thumbnail" alt="" height="150px">
                             </div>
                         </div>
-                        <a class="btn btn-warning" href=""><i class="bi bi-cart-fill"></i></i>Checkout</a>
+                        <a class="btn btn-warning" href=""><i class="bi bi-cart me-1"></i></i>Checkout</a>
                     </div>
                 </div>
             </div>

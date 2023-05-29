@@ -43,7 +43,7 @@
                                 href="{{ route('stores') }}">Stores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('users*') ? 'active' : '' }}"
+                            <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}"
                                 href="{{ route('users') }}">Users</a>
                         </li>
                     </ul>

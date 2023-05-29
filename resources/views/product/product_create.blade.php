@@ -22,14 +22,14 @@
                                 <input type="text" class="form-control" name="description">
                             </div>
                             <div class="mb-3">
-                                <label for="image" class="form-label">Iamge</label>
+                                <label for="image" class="form-label">Image</label>
                                 <input type="file" class="form-control" name="image">
                             </div>
                             <div class="mb-3">
                                 <label for="stock" class="form-label">Stock</label>
                                 <input type="number" class="form-control" name="stock">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-success">Save</button>
                         </form>
                     </div>
                 </div>
