@@ -21,6 +21,11 @@ class UserController extends Controller
         return view('users.admin.user_detail', compact('user'));
     }
 
+    public function editUser(User $user)
+    {
+        return view('users.admin.user_edit', compact('user'));
+    }
+
     public function deleteUser(User $user)
     {
         $user->delete();

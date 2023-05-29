@@ -47,3 +47,4 @@ Route::delete('/store/{store}/delete', [StoreController::class, 'deleteStore'])-
 // Users Route
 Route::get('/users', [UserController::class, 'users'])->name('users');
 Route::get('/user/{user}', [UserController::class, 'detailUser'])->name('detail_user');
+Route::get('/user/{user}/edit', [UserController::class, 'editUser'])->name('edit_user');

@@ -20,6 +20,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
+                            <img src="{{ url('storage/' . $store->picture) }}" class="img-fluid mb-4" alt="">
                             @foreach ($products as $product)
                                 <div class="col-sm-4 mb-3 mb-sm-2">
                                     <div class="card">
