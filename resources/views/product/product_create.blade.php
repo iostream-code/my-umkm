@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">{{ __('Create Product') }}</div>
                     <div class="card-body">
-                        <form action="{{ route('regist_product') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('regist_product', $store) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">Product Name</label>

@@ -54,7 +54,9 @@ class StoreController extends Controller
 
     public function detailStore(Store $store)
     {
-        return view('store.store_detail', compact('store'));
+        $products = Product::where('store_id', $store->id)->get();
+
+        return view('store.store_detail', compact('store', 'products'));
     }
 
     public function editStore(Store $store)

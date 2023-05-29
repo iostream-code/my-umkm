@@ -22,15 +22,11 @@ class ProductController extends Controller
 
     public function createProduct(Store $store)
     {
-        // $store = Store::all()->first();
-        dd($store->id);
-        return view('product.product_create');
+        return view('product.product_create', compact('store'));
     }
 
-    public function registProduct(Request $req)
+    public function registProduct(Request $req, Store $store)
     {
-        $store = Store::all();
-
         $req->validate([
             'name' => 'required',
             'price' => 'required',
@@ -53,7 +49,7 @@ class ProductController extends Controller
             'stock' => $req->stock
         ]);
 
-        return Redirect::route('products');
+        return Redirect::route('stores');
     }
 
     public function detailProduct(Product $product)
