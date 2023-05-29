@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Product;
+use App\Models\Store;
+use Ramsey\Uuid\Type\Integer;
 
 class ProductController extends Controller
 {
@@ -18,13 +20,17 @@ class ProductController extends Controller
         return view('product.products', compact('products'));
     }
 
-    public function createProduct()
+    public function createProduct(Store $store)
     {
+        // $store = Store::all()->first();
+        dd($store->id);
         return view('product.product_create');
     }
 
     public function registProduct(Request $req)
     {
+        $store = Store::all();
+
         $req->validate([
             'name' => 'required',
             'price' => 'required',
@@ -39,6 +45,7 @@ class ProductController extends Controller
         Storage::disk('local')->put('public/' . $path, file_get_contents($file));
 
         Product::create([
+            'store_id' => $store->id,
             'name' => $req->name,
             'price' => $req->price,
             'description' => $req->description,

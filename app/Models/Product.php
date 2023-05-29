@@ -13,6 +13,7 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
+        'store_id',
         'name',
         'price',
         'description',
@@ -28,5 +29,10 @@ class Product extends Model
     public function carts()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
     }
 }
