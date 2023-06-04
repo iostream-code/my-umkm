@@ -22,7 +22,8 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        Disini Anda dapat melihat User yang terdaftar serta dapat menghapus User lain melalui tampilan Anda.
+                                        Disini Anda dapat melihat User yang terdaftar serta dapat menghapus User lain
+                                        melalui tampilan Anda.
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -58,7 +59,7 @@
                                                     <button type="submit" class="btn btn-primary btn-sm"><i
                                                             class="bi bi-search"></i></button>
                                                 </form>
-                                                <form action="" method="POST">
+                                                <form action="{{ route('delete_user', $user) }}" method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i

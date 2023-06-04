@@ -7,8 +7,8 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         {{ __('Products') }}
-                        <button type="button" class="btn btn-success btn-sm"
-                            onclick="window.location='{{ route('create_product') }}'">Create</button>
+                        {{-- <button type="button" class="btn btn-success btn-sm"
+                            onclick="window.location='{{ route('create_product') }}'">Create</button> --}}
                     </div>
                     <div class="card-body">
                         <table class="table">

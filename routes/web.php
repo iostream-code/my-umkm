@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +49,7 @@ Route::delete('/store/{store}/delete', [StoreController::class, 'deleteStore'])-
 Route::get('/users', [UserController::class, 'users'])->name('users');
 Route::get('/user/{user}', [UserController::class, 'detailUser'])->name('detail_user');
 Route::get('/user/{user}/edit', [UserController::class, 'editUser'])->name('edit_user');
+Route::delete('/user/{user}/delete', [UserController::class, 'deleteUser'])->name('delete_user');
+
+//Cart Route
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
