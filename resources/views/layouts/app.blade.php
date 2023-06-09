@@ -39,13 +39,19 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
+                            <a class="nav-link {{ request()->is('home*') ? 'active' : '' }}"
+                                href="{{ route('home') }}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {{ request()->is('store*') ? 'active' : '' }}"
                                 href="{{ route('stores') }}">Stores</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}"
-                                href="{{ route('users') }}">Users</a>
-                        </li>
+                        @if (isset(Auth::user()->is_admin) && Auth::user()->is_admin)
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}"
+                                    href="{{ route('users') }}">Users</a>
+                            </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->

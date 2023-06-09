@@ -11,28 +11,30 @@
                             data-bs-target="#exampleModal">
                             <i class="bi bi-info-circle"></i>
                         </button>
-                        {{-- Modal --}}
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5">Role Admin</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Disini Anda dapat melihat User yang terdaftar serta dapat menghapus User lain
-                                        melalui tampilan Anda.
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
+                        @if (Auth::user()->is_admin == true)
+                            {{-- Modal --}}
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5">Role Admin</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Disini Anda dapat melihat User yang terdaftar serta dapat menghapus User lain
+                                            melalui tampilan Anda.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        {{-- End Modal --}}
+                            {{-- End Modal --}}
+                        @endif
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -51,7 +53,13 @@
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>{{ $user->role }}</td>
+                                        <td>
+                                            @if($user->is_admin)
+                                                Admin
+                                            @else
+                                                Visitor
+                                            @endif
+                                        </td>
                                         <td>
                                             <div class="d-flex flex-row gap-2">
                                                 <form action="{{ route('detail_user', $user) }}" method="GET">

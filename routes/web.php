@@ -53,3 +53,4 @@ Route::delete('/user/{user}/delete', [UserController::class, 'deleteUser'])->nam
 
 //Cart Route
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('add_to_cart');
