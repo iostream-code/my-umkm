@@ -7,8 +7,11 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         {{ __('Stores') }}
-                        <button type="button" class="btn btn-success btn-sm"
-                            onclick="window.location='{{ route('create_store') }}'"><i class="bi bi-house-add me-1"></i>Create</button>
+                        @if (Auth::user()->is_admin == false)
+                            <button type="button" class="btn btn-success btn-sm"
+                                onclick="window.location='{{ route('create_store') }}'"><i
+                                    class="bi bi-house-add me-1"></i>Create</button>
+                        @endif
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -31,8 +34,7 @@
                                         <td>
                                             <div class="d-flex flex-row gap-2">
 
-                                                <form action="{{ route('detail_store', $store) }}"
-                                                    method="GET">
+                                                <form action="{{ route('detail_store', $store) }}" method="GET">
                                                     @csrf
                                                     <button type="submit" class="btn btn-primary btn-sm"><i
                                                             class="bi bi-search"></i></button>

@@ -34,7 +34,10 @@
                                     </tbody>
                                 </table>
                                 <div class="d-flex flex-row justify-content-between">
-                                    <button class="btn btn-secondary btn-sm">Back</button>
+                                    <a class="btn btn-primary-outline btn-sm rounded-5" href="#">
+                                        <i class="bi bi-arrow-left-short">
+                                        </i> Back
+                                    </a>
                                     <h6>Total: total bayar</h6>
                                 </div>
                             </div>

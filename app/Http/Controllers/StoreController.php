@@ -10,14 +10,34 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Models\Store;
 use App\Models\Product;
+use App\Models\User;
 
 class StoreController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function stores()
     {
-        $stores = Store::all();
+        if (Auth::user()->is_admin) {
+            $stores = Store::all();
 
-        return view('store.stores', compact('stores'));
+            return view('store.stores', compact('stores'));
+        } else {
+            $store = Store::where('user_id', Auth::id())->get()->first();
+            if (isset($store)) {
+                $products = Product::where('store_id', $store->id)->get();
+                return view('store.my_store', compact('store', 'products'));
+            } else
+                return view('store.my_store', compact('store'));
+        }
     }
 
     public function createStore()

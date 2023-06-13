@@ -7,16 +7,20 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         {{ $store->name }}
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Menu
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('create_product', $store) }}">Add Product</a></li>
-                                <li><a class="dropdown-item" href="{{ route('edit_store', $store) }}">Edit Store</a></li>
-                            </ul>
-                        </div>
+                        @if (!Auth::user()->is_admin && Auth::id() == $store->user_id)
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Menu
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('create_product', $store) }}">Add
+                                            Product</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('edit_store', $store) }}">Edit Store</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        @endif
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -32,8 +36,11 @@
                                             <p class="card-text">Available {{ $product->stock }} pcs</p>
                                             <a href="{{ route('detail_product', $product) }}" class="btn btn-primary btn-sm"
                                                 type="button"><i class="bi bi-search"></i></a>
-                                            <a href="{{ route('delete_product', $product) }}" class="btn btn-danger btn-sm"
-                                                type="button"><i class="bi bi-trash"></i></a>
+                                            @if (!Auth::user()->is_admin && Auth::id() == $store->user_id)
+                                                <a href="{{ route('delete_product', $product) }}"
+                                                    class="btn btn-danger btn-sm" type="button"><i
+                                                        class="bi bi-trash"></i></a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
