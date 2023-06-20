@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Store;
 
 class CartController extends Controller
 {
@@ -16,19 +17,21 @@ class CartController extends Controller
         $user_id = Auth::id();
         $product_id = $product->id;
 
-        $existing_cart = Cart::where('product_id', $product_id)
+        $existing_cart = Cart::where('store_id', $product->store_id)
+            ->where('product_id', $product_id)
             ->where('user_id', $user_id)
             ->first();
 
-        if ($existing_cart == null) {
+        if ($existing_cart == '') {
             $request->validate([
                 'amount' => 'required|gte:1|lte:' . $product->stock
             ]);
 
             Cart::create([
                 'user_id' => $user_id,
-                'product_id' => $user_id,
-                'ampunt' => $request->amount,
+                'product_id' => $product->id,
+                'store_id' => $product->store_id,
+                'amount' => $request->amount,
             ]);
         } else {
             $request->validate([
@@ -46,8 +49,20 @@ class CartController extends Controller
     public function showCart()
     {
         $user_id = Auth::id();
-        $carts =  Cart::where('user_id', $user_id);
+        $carts =  Cart::where('user_id', $user_id)->get();
 
-        return view('cart.index', compact('carts'));
+        return view('cart.cart', compact('carts'));
+    }
+
+    public function deleteCart(Cart $cart)
+    {
+        $cart->delete();
+
+        return Redirect::route('home');
+    }
+
+    public function checkout(Cart $cart)
+    {
+        return view('cart.checkout', compact('cart'));
     }
 }

@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         {{ __('Stores') }}
-                        @if (Auth::user()->is_admin == false)
+                        @if (Auth::user()->role == 'seller')
                             <button type="button" class="btn btn-success btn-sm"
                                 onclick="window.location='{{ route('create_store') }}'"><i
                                     class="bi bi-house-add me-1"></i>Create</button>

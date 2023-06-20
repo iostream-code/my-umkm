@@ -13,7 +13,6 @@
                             </div>
                         @endif
                         <div class="row">
-
                             @foreach ($stores as $store)
                                 <div class="col-sm-4 mb-3 mb-sm-2">
                                     <div class="card">

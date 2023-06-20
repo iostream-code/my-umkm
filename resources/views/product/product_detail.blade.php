@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         {{ $product->name }}
-                        @if (!Auth::user()->is_admin)
+                        @if (Auth::user()->role == 'seller')
                             <button type="button" class="btn btn-success btn-sm"
                                 onclick="window.location='{{ route('edit_product', $product) }}'">Edit</button>
                         @endif
@@ -31,6 +31,23 @@
                                         <tr class="table-light">
                                             <td>{{ $product->stock }} pcs</td>
                                         </tr>
+                                        @if (Auth::user()->role == 'visitor')
+                                            <tr class="table-light">
+                                                <td>
+                                                    <form action="{{ route('add_to_cart', $product) }}" method="post">
+                                                        @csrf
+                                                        <div class="form-floating">
+                                                            <input class="form-control" type="number" name="amount"
+                                                                placeholder="Please enter the amount">
+                                                            <label>Amount</label>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-warning mt-3">
+                                                            <i class="bi bi-cart me-1"></i></i>Checkout
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -39,9 +56,10 @@
                                     alt="" height="150px">
                             </div>
                         </div>
-                        @if (!Auth::user()->is_admin)
-                            <a class="btn btn-warning" href="{{ route('add_to_cart') }}"><i class="bi bi-cart me-1"></i></i>Checkout</a>
-                        @endif
+                        {{-- @if (Auth::user()->role == 'visitor')
+                            <a class="btn btn-warning" href="{{ route('add_to_cart') }}"><i
+                                    class="bi bi-cart me-1"></i></i>Checkout</a>
+                        @endif --}}
                     </div>
                 </div>
             </div>

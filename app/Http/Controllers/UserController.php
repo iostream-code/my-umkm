@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function users()
     {
-        $users = User::where('is_admin', false)->get();
+        $users = User::where('role', '!=', 'admin')->get();
 
         return view('users.admin.users', compact('users'));
     }

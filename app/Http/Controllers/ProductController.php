@@ -49,7 +49,7 @@ class ProductController extends Controller
             'stock' => $req->stock
         ]);
 
-        return Redirect::route('detail_store', compact('store'));
+        return Redirect::route('stores', compact('store'));
     }
 
     public function detailProduct(Product $product)
@@ -85,7 +85,7 @@ class ProductController extends Controller
             'stock' => $req->stock
         ]);
 
-        return Redirect::route('products');
+        return Redirect::route('stores');
     }
 
     public function deleteProduct(Product $product)
