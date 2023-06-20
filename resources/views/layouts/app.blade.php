@@ -47,6 +47,12 @@
                                     href="{{ route('stores') }}">Stores</a>
                             </li>
                         @endif
+                        @if (Auth::id() != '' && Auth::user()->role == 'visitor')
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->is('my-cart*') ? 'active' : '' }}"
+                                    href="{{ route('cart') }}">My Cart</a>
+                            </li>
+                        @endif
                         @if (Auth::id() != '' && Auth::user()->role == 'admin')
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}"

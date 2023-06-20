@@ -54,4 +54,5 @@ Route::delete('/user/{user}/delete', [UserController::class, 'deleteUser'])->nam
 //Cart Route
 Route::get('/my-cart', [CartController::class, 'showCart'])->name('cart');
 Route::post('/my-cart/{product}', [CartController::class, 'addToCart'])->name('add_to_cart');
-Route::delete('/my-cart/{product}', [CartController::class, 'deleteCart'])->name('delete_cart');
+Route::delete('/my-cart/{cart}', [CartController::class, 'deleteCart'])->name('delete_cart');
+Route::get('/my-cart/{cart}/checkout', [CartController::class, 'checkout'])->name('checkout');

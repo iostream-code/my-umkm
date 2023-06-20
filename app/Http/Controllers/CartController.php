@@ -58,6 +58,11 @@ class CartController extends Controller
     {
         $cart->delete();
 
-        return Redirect::back();
+        return Redirect::route('home');
+    }
+
+    public function checkout(Cart $cart)
+    {
+        return view('cart.checkout', compact('cart'));
     }
 }

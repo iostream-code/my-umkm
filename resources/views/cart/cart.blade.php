@@ -19,11 +19,14 @@
                                             <th scope="col">Image</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Amount</th>
-                                            <th scope="col">Total Price</th>
+                                            <th scope="col">Sub Total</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $total_bayar = 0;
+                                        @endphp
                                         @foreach ($carts as $item)
                                             <tr class="table-light">
                                                 <td>{{ $loop->iteration }}</td>
@@ -35,14 +38,16 @@
                                                 <td>{{ $item->product->price }}</td>
                                                 <td>{{ $item->amount }}</td>
                                                 <td>{{ $item->product->price * $item->amount }}</td>
+                                                @php
+                                                    $total = $item->product->price * $item->amount;
+                                                    $total_bayar += $total;
+                                                @endphp
                                                 <td>
-                                                    <button type="button"
-                                                        onclick="window.location='{{ route('detail_product', $item->product) }}'"
-                                                        class="btn btn-primary btn-sm">View</button>
                                                     <form action="{{ route('delete_cart', $item) }}" method="post">
-                                                        @csrf
                                                         @method('delete')
-                                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                                class="bi bi-trash"></i></button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -50,10 +55,18 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <form action="" method="post">
-                                @csrf
-                                <button class="btn btn-success">Proceed to Pay</button>
-                            </form>
+                            <div class="row">
+                                <div class="col-10">
+                                    <form action="{{ route('checkout', $item) }}" method="get">
+                                        @csrf
+                                        <button class="btn btn-success btn-sm">Proceed to Pay</button>
+                                    </form>
+                                </div>
+                                <div class="col-2">
+                                    <h5>Total Bayar</h5>
+                                    <p><Strong>Rp. {{ $total_bayar }}</Strong></p>
+                                </div>
+                            </div>
                         </div>
                         {{-- @if (Auth::user()->role == 'visitor')
                             <a class="btn btn-warning" href="{{ route('add_to_cart') }}"><i

@@ -85,7 +85,7 @@ class ProductController extends Controller
             'stock' => $req->stock
         ]);
 
-        return Redirect::route('products');
+        return Redirect::route('stores');
     }
 
     public function deleteProduct(Product $product)
