@@ -26,7 +26,7 @@ class StoreController extends Controller
 
     public function stores()
     {
-        if (Auth::user()->is_admin) {
+        if (Auth::user()->role == 'admin') {
             $stores = Store::all();
 
             return view('store.stores', compact('stores'));

@@ -11,7 +11,7 @@
                             data-bs-target="#exampleModal">
                             <i class="bi bi-info-circle"></i>
                         </button>
-                        @if (Auth::user()->is_admin == true)
+                        @if (Auth::user()->role == 'admin')
                             {{-- Modal --}}
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
@@ -53,13 +53,7 @@
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>
-                                            @if($user->is_admin)
-                                                Admin
-                                            @else
-                                                Visitor
-                                            @endif
-                                        </td>
+                                        <td>{{ $user->role }}</td>
                                         <td>
                                             <div class="d-flex flex-row gap-2">
                                                 <form action="{{ route('detail_user', $user) }}" method="GET">

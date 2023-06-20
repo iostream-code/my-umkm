@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Store;
-use App\Models\Product;
+use App\Models\Transaction;
 
 class Order extends Model
 {
@@ -23,8 +23,8 @@ class Order extends Model
         return $this->belongsTo(Store::class);
     }
 
-    public function products()
+    public function transactions()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->hasMany(Transaction::class);
     }
 }

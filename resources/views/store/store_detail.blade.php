@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         {{ $store->name }}
-                        @if (!Auth::user()->is_admin && Auth::id() == $store->user_id)
+                        @if (Auth::user()->seller && Auth::id() == $store->user_id)
                             <div class="btn-group">
                                 <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-bs-toggle="dropdown"
                                     aria-expanded="false">
@@ -36,7 +36,7 @@
                                             <p class="card-text">Available {{ $product->stock }} pcs</p>
                                             <a href="{{ route('detail_product', $product) }}" class="btn btn-primary btn-sm"
                                                 type="button"><i class="bi bi-search"></i></a>
-                                            @if (!Auth::user()->is_admin && Auth::id() == $store->user_id)
+                                            @if (Auth::user()->role == 'seller' && Auth::id() == $store->user_id)
                                                 <a href="{{ route('delete_product', $product) }}"
                                                     class="btn btn-danger btn-sm" type="button"><i
                                                         class="bi bi-trash"></i></a>

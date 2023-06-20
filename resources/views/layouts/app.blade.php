@@ -26,7 +26,6 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{-- {{ config('app.name', 'Laravel') }} --}}
                     My UMKM
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -42,11 +41,13 @@
                             <a class="nav-link {{ request()->is('home*') ? 'active' : '' }}"
                                 href="{{ route('home') }}">Dashboard</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('store*') ? 'active' : '' }}"
-                                href="{{ route('stores') }}">Stores</a>
-                        </li>
-                        @if (isset(Auth::user()->is_admin) && Auth::user()->is_admin)
+                        @if (Auth::id() != '' && Auth::user()->role != 'visitor')
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->is('store*') ? 'active' : '' }}"
+                                    href="{{ route('stores') }}">Stores</a>
+                            </li>
+                        @endif
+                        @if (Auth::id() != '' && Auth::user()->role == 'admin')
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}"
                                     href="{{ route('users') }}">Users</a>

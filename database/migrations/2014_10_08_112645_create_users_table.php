@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
-            $table->boolean('is_admin')->default(true);
+            $table->enum('role', ['admin', 'seller', 'visitor'])->default('visitor');
             $table->timestamps();
         });
     }
