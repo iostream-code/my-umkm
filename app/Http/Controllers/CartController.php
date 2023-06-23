@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\Payment;
+use App\Models\Product;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-
-use App\Models\Product;
-use App\Models\Cart;
-use App\Models\Store;
 
 class CartController extends Controller
 {
@@ -61,8 +61,20 @@ class CartController extends Controller
         return Redirect::route('home');
     }
 
-    public function checkout(Cart $cart)
+    public function payment(Cart $cart)
     {
-        return view('cart.checkout', compact('cart'));
+        return view('cart.payment', compact('cart'));
+    }
+
+    public function checkout(Request $request)
+    {
+        Payment::create([
+            'is_transfer' => $request->payment_method,
+            'receiver' => $request->name,
+            'address' => $request->address,
+            'phone' => $request->phone
+        ]);
+
+        return Redirect::route('home');
     }
 }

@@ -47,7 +47,8 @@
                         <div class="d-flex flex-row justify-content-between align-items-start gap-2">
                             <div class="col-12">
                                 <div class="row">
-                                    <form action="" method="post">
+                                    <form action="{{ route('checkout', $cart) }}" method="post">
+                                        @csrf
                                         <h6><strong>Payment Method</strong></h6>
                                         <div class="d-flex flex-row gap-4 mb-4">
                                             <div class="form-check">
@@ -68,17 +69,17 @@
                                         <h6><strong>Data Penerima</strong></h6>
                                         <div class="mb-3">
                                             <label class="form-label">Nama Penerima</label>
-                                            <input type="text" class="form-control" placeholder="Nama Panggilan">
+                                            <input type="text" name="name" class="form-control" placeholder="Nama Panggilan">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Alamat Rumah</label>
-                                            <input type="text" class="form-control" placeholder="Alamat pada Gmaps">
+                                            <input type="text" name="address" class="form-control" placeholder="Alamat pada Gmaps">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Nomor Telepon</label>
-                                            <input type="text" class="form-control" placeholder="Nomor Aktif">
+                                            <input type="text" name="phone" class="form-control" placeholder="Nomor Aktif">
                                         </div>
-                                        <button class="btn btn-primary btn-sm">Checkout</button>
+                                        <button type="submit" class="btn btn-primary btn-sm">Checkout</button>
                                     </form>
                                 </div>
                             </div>
