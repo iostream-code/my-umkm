@@ -41,7 +41,19 @@
                             <a class="nav-link {{ request()->is('home*') ? 'active' : '' }}"
                                 href="{{ route('home') }}">Dashboard</a>
                         </li>
-                        @if (Auth::id() != '' && Auth::user()->role != 'visitor')
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('store*') ? 'active' : '' }}"
+                                href="{{ route('stores') }}">Stores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('order*') ? 'active' : '' }}"
+                                href="{{ route('orders') }}">Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}"
+                                href="{{ route('users') }}">Users</a>
+                        </li>
+                        {{-- @if (Auth::id() != '' && Auth::user()->role != 'visitor')
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->is('store*') ? 'active' : '' }}"
                                     href="{{ route('stores') }}">Stores</a>
@@ -58,7 +70,7 @@
                                 <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}"
                                     href="{{ route('users') }}">Users</a>
                             </li>
-                        @endif
+                        @endif --}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->

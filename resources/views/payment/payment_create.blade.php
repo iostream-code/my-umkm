@@ -53,14 +53,14 @@
                                         <div class="d-flex flex-row gap-4 mb-4">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="payment_method"
-                                                    id="payment_method1" value="false">
+                                                    id="payment_method1" value="0">
                                                 <label class="form-check-label" for="payment_method1">
                                                     Cash on Delivery
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="payment_method"
-                                                    id="payment_method2" value="true">
+                                                    id="payment_method2" value="1">
                                                 <label class="form-check-label" for="payment_method2">
                                                     Transfer Bank
                                                 </label>

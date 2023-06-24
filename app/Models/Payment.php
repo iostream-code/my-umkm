@@ -17,8 +17,8 @@ class Payment extends Model
         'phone',
     ];
 
-    public function cart()
+    public function transaction()
     {
-        return $this->hasOne(Cart::class);
+        return $this->hasOne(Transaction::class);
     }
 }

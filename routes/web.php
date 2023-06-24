@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,9 +52,10 @@ Route::get('/user/{user}', [UserController::class, 'detailUser'])->name('detail_
 Route::get('/user/{user}/edit', [UserController::class, 'editUser'])->name('edit_user');
 Route::delete('/user/{user}/delete', [UserController::class, 'deleteUser'])->name('delete_user');
 
-//Cart Route
-Route::get('/my-cart', [CartController::class, 'showCart'])->name('cart');
+// Order Route
+Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+Route::get('/order/create', [OrderController::class, 'create'])->name('create_order');
+
+// Cart Route
+Route::get('/my-cart', [CartController::class, 'index'])->name('cart');
 Route::post('/my-cart/{product}', [CartController::class, 'addToCart'])->name('add_to_cart');
-Route::delete('/my-cart/{cart}', [CartController::class, 'deleteCart'])->name('delete_cart');
-Route::get('/my-cart/{cart}/payment', [CartController::class, 'payment'])->name('payment');
-Route::post('/my-cart/{cart}/payment/checkout', [CartController::class, 'checkout'])->name('checkout');

@@ -43,7 +43,7 @@
                                                     $total_bayar += $total;
                                                 @endphp
                                                 <td>
-                                                    <form action="{{ route('delete_cart', $item) }}" method="post">
+                                                    <form action="" method="post">
                                                         @method('delete')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger btn-sm"><i
@@ -57,7 +57,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-10">
-                                    <form action="{{ route('payment', $item) }}" method="get">
+                                    <form action="" method="get">
                                         @csrf
                                         <button class="btn btn-success btn-sm">Proceed to Pay</button>
                                     </form>

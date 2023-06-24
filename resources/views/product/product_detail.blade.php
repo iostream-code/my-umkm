@@ -42,7 +42,7 @@
                                                             <label>Amount</label>
                                                         </div>
                                                         <button type="submit" class="btn btn-warning mt-3">
-                                                            <i class="bi bi-cart me-1"></i></i>Checkout
+                                                            <i class="bi bi-cart me-1"></i></i>Add to Cart
                                                         </button>
                                                     </form>
                                                 </td>

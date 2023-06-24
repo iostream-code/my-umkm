@@ -16,7 +16,6 @@ class Store extends Model
         'user_id',
         'name',
         'email',
-        'password',
         'picture',
         'location'
     ];

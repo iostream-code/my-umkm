@@ -12,6 +12,7 @@ class Transaction extends Model
     protected $fillable = [
         'product_id',
         'order_id',
+        'payment_id',
         'amount',
     ];
 
@@ -23,5 +24,10 @@ class Transaction extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
     }
 }
