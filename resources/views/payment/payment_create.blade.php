@@ -36,7 +36,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
+                                        <button type="button" class="btn btn-danger btn-sm"
                                             data-bs-dismiss="modal">Close</button>
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                         <div class="d-flex flex-row justify-content-between align-items-start gap-2">
                             <div class="col-12">
                                 <div class="row">
-                                    <form action="{{ route('checkout', $cart) }}" method="post">
+                                    <form action="#" method="post">
                                         @csrf
                                         <h6><strong>Payment Method</strong></h6>
                                         <div class="d-flex flex-row gap-4 mb-4">

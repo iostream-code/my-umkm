@@ -57,7 +57,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-10">
-                                    <form action="" method="get">
+                                    <form action="{{ route('create_payment') }}" method="get">
                                         @csrf
                                         <button class="btn btn-success btn-sm">Proceed to Pay</button>
                                     </form>

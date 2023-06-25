@@ -8,6 +8,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +22,8 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('dashboard');
+})->name('dashboard');
 
 Auth::routes();
 
@@ -59,3 +60,7 @@ Route::get('/order/create', [OrderController::class, 'create'])->name('create_or
 // Cart Route
 Route::get('/my-cart', [CartController::class, 'index'])->name('cart');
 Route::post('/my-cart/{product}', [CartController::class, 'addToCart'])->name('add_to_cart');
+
+// Payment Route
+Route::get('/my-cart', [TransactionController::class, 'create'])->name('payment');
+Route::get('/my-cart/payment', [TransactionController::class, 'create'])->name('create_payment');

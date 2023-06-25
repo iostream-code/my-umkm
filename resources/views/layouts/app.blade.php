@@ -19,6 +19,11 @@
 
     <!-- CDN Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- CDN Template SB -->
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -53,24 +58,6 @@
                             <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}"
                                 href="{{ route('users') }}">Users</a>
                         </li>
-                        {{-- @if (Auth::id() != '' && Auth::user()->role != 'visitor')
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->is('store*') ? 'active' : '' }}"
-                                    href="{{ route('stores') }}">Stores</a>
-                            </li>
-                        @endif
-                        @if (Auth::id() != '' && Auth::user()->role == 'visitor')
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->is('my-cart*') ? 'active' : '' }}"
-                                    href="{{ route('cart') }}">My Cart</a>
-                            </li>
-                        @endif
-                        @if (Auth::id() != '' && Auth::user()->role == 'admin')
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}"
-                                    href="{{ route('users') }}">Users</a>
-                            </li>
-                        @endif --}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -117,6 +104,13 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- CDN Javascript -->
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
