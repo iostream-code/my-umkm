@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Store') }}</div>
+                    <div class="card-header">My Store</div>
                     <div class="card-body">
                         <form action="{{ route('update_store', $store) }}" method="POST" enctype="multipart/form-data">
                             @csrf

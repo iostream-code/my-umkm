@@ -11,6 +11,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
                     Store
                 </a>
+                <a class="nav-link" href="{{ route('orders') }}" {{ request()->is('order*') ? 'active' : '' }}>
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Order
+                </a>
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
                     <button type="submit" class="nav-link">
