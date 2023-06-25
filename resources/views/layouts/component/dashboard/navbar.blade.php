@@ -11,7 +11,7 @@
                     <div class="d-flex flex-row justify-content-between align-items-center">
                         @auth
                             <li class="nav-item">
-                                <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
+                                <a href="{{ route('home') }}" class="nav-link">Dashboard</a>
                             </li>
                         @else
                             <li class="nav-item">
