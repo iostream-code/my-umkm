@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,7 +27,14 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::all();
+        $users = User::where('role', '!=', 'admin')->get();
+        $user = User::where('id', Auth::id())->first();
 
-        return view('home', compact('products'));
+        if (Auth::user()->role == 'visitor')
+            return view('home', compact('products'));
+        elseif (Auth::user()->role == 'admin')
+            return view('users.admin.users', compact('users'));
+        else
+            return view('users.admin.user_detail', compact('user'));
     }
 }
