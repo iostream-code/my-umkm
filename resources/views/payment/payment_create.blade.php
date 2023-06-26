@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.home')
 
 @section('content')
-    <div class="container">
+    <div class="container py-3">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -47,7 +47,7 @@
                         <div class="d-flex flex-row justify-content-between align-items-start gap-2">
                             <div class="col-12">
                                 <div class="row">
-                                    <form action="#" method="post">
+                                    <form action="{{ route('payment') }}" method="get">
                                         @csrf
                                         <h6><strong>Payment Method</strong></h6>
                                         <div class="d-flex flex-row gap-4 mb-4">

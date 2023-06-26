@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.home')
 
 @section('content')
-    <div class="container">
+    <div class="container my-3">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -43,7 +43,7 @@
                                                     $total_bayar += $total;
                                                 @endphp
                                                 <td>
-                                                    <form action="" method="post">
+                                                    <form action="{{ route('delete_cart', $item) }}" method="post">
                                                         @method('delete')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger btn-sm"><i
