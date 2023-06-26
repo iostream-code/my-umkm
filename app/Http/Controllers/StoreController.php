@@ -45,9 +45,9 @@ class StoreController extends Controller
         return view('store.store_create');
     }
 
-    public function registStore(Request $req)
+    public function registStore(Request $request)
     {
-        $req->validate([
+        $request->validate([
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
@@ -55,18 +55,18 @@ class StoreController extends Controller
             'location' => 'required'
         ]);
 
-        $file = $req->file('picture');
-        $path = time() . '_' . $req->name . '.' . $file->getClientOriginalExtension();
+        $file = $request->file('picture');
+        $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
 
         Storage::disk('local')->put('public/' . $path, file_get_contents($file));
 
         Store::create([
             'user_id' => Auth::id(),
-            'name' => $req->name,
-            'email' => $req->email,
-            'password' => Hash::make($req->password),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
             'picture' => $path,
-            'location' => $req->location
+            'location' => $request->location
         ]);
 
         return Redirect::route('stores');

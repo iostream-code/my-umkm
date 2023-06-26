@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Seller 1',
+                'name' => 'Mas Roy',
                 'email' => 'seller1@gmail.com',
                 'password' => Hash::make('seller123'),
                 'role' => 'seller',
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Seller 2',
+                'name' => 'Bu Lilis',
                 'email' => 'seller2@gmail.com',
                 'password' => Hash::make('seller234'),
                 'role' => 'seller',
@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Seller 3',
+                'name' => 'Mas Oni',
                 'email' => 'seller3@gmail.com',
                 'password' => Hash::make('seller345'),
                 'role' => 'seller',
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Visitor 1',
+                'name' => 'Suro',
                 'email' => 'visitor1@gmail.com',
                 'password' => Hash::make('visitor123'),
                 'role' => 'visitor',
@@ -58,7 +58,7 @@ class UserSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Visitor 2',
+                'name' => 'Cici',
                 'email' => 'visitor2@gmail.com',
                 'password' => Hash::make('visitor234'),
                 'role' => 'visitor',

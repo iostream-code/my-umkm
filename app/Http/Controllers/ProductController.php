@@ -25,9 +25,9 @@ class ProductController extends Controller
         return view('product.product_create', compact('store'));
     }
 
-    public function registProduct(Request $req, Store $store)
+    public function registProduct(Request $request, Store $store)
     {
-        $req->validate([
+        $request->validate([
             'name' => 'required',
             'price' => 'required',
             'description' => 'required',
@@ -35,18 +35,18 @@ class ProductController extends Controller
             'stock' => 'required'
         ]);
 
-        $file = $req->file('image');
-        $path = time() . '_' . $req->name . '.' . $file->getClientOriginalExtension();
+        $file = $request->file('image');
+        $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
 
         Storage::disk('local')->put('public/' . $path, file_get_contents($file));
 
         Product::create([
             'store_id' => $store->id,
-            'name' => $req->name,
-            'price' => $req->price,
-            'description' => $req->description,
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
             'image' => $path,
-            'stock' => $req->stock
+            'stock' => $request->stock
         ]);
 
         return Redirect::route('stores', compact('store'));
@@ -54,6 +54,8 @@ class ProductController extends Controller
 
     public function detailProduct(Product $product)
     {
+        if (Auth::user()->role == 'seller')
+            return view('product.product_detail_seller', compact('product'));
         return view('product.product_detail', compact('product'));
     }
 

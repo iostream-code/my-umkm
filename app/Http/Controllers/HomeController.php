@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
-
-use App\Models\Store;
 
 class HomeController extends Controller
 {
@@ -25,8 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $stores = Store::all();
+        $products = Product::all();
 
-        return view('home', compact('stores'));
+        return view('home', compact('products'));
     }
 }

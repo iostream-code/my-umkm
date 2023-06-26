@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Store;
-use App\Model\Order;
+use App\Model\Transaction;
+use App\Model\Cart;
 
 class Product extends Model
 {
@@ -21,18 +22,18 @@ class Product extends Model
         'stock',
     ];
 
-    public function orders()
+    public function store()
     {
-        return $this->belongsToMany(Order::class);
+        return $this->belongsTo(Store::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
     }
 
     public function carts()
     {
-        return $this->hasMany(Order::class);
-    }
-
-    public function store()
-    {
-        return $this->belongsTo(Store::class);
+        return $this->hasMany(Cart::class);
     }
 }
