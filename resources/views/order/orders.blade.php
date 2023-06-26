@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 <tr class="table-light">
-                    <th scope="row">#</th>
+                    <th scope="row"></th>
                     <td>#####</td>
                     <td>#####</td>
                     <td>#####</td>
@@ -41,7 +41,6 @@
                         </div>
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>

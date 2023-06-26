@@ -15,7 +15,8 @@ class ProductController extends Controller
 {
     public function products()
     {
-        $products = Product::all();
+        $store = Store::where('user_id', Auth::id())->first();
+        $products = Product::where('store_id', $store->id)->get();
 
         return view('product.products', compact('products'));
     }

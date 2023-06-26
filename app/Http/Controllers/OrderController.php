@@ -17,7 +17,12 @@ class OrderController extends Controller
 {
     public function index()
     {
+
         $orders = Order::all();
+        $order = Order::where('user_id', Auth::id())->get();
+
+        if(Auth::user()->role == 'visitor')
+            return view('users.visitor.orders', compact('order'));
 
         return view('order.orders', compact('orders'));
     }
