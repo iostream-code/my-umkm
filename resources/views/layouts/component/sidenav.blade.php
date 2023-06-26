@@ -11,9 +11,17 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
                     Store
                 </a>
+                <a class="nav-link" href="{{ route('products') }}" {{ request()->is('product*') ? 'active' : '' }}>
+                    <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                    Product
+                </a>
                 <a class="nav-link" href="{{ route('orders') }}" {{ request()->is('order*') ? 'active' : '' }}>
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Order
+                </a>
+                <a class="nav-link" href="#" {{ request()->is('profile*') ? 'active' : '' }}>
+                    <div class="sb-nav-link-icon"><i class="bi bi-person-circle"></i></div>
+                    Profile
                 </a>
                 <form action="{{ route('logout') }}" method="post">
                     @csrf

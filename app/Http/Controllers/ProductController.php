@@ -54,6 +54,8 @@ class ProductController extends Controller
 
     public function detailProduct(Product $product)
     {
+        if (Auth::user()->role == 'seller')
+            return view('product.product_detail_seller', compact('product'));
         return view('product.product_detail', compact('product'));
     }
 
