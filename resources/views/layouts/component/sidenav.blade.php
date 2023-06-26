@@ -8,6 +8,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-person"></i></div>
                         User
                     </a>
+                    <a class="nav-link" href="{{ route('stores') }}" {{ request()->is('store*') ? 'active' : '' }}>
+                        <div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
+                        Store
+                    </a>
                 @else
                     <a class="nav-link" href="{{ route('stores') }}" {{ request()->is('store*') ? 'active' : '' }}>
                         <div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>

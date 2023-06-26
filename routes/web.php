@@ -58,9 +58,10 @@ Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 Route::get('/order/create', [OrderController::class, 'create'])->name('create_order');
 
 // Cart Route
-Route::get('/my-cart', [CartController::class, 'index'])->name('cart');
+Route::get('/my-cart/{cart}', [CartController::class, 'index'])->name('cart');
 Route::post('/my-cart/{product}', [CartController::class, 'addToCart'])->name('add_to_cart');
+Route::delete('/my-cart/{cart}/delete', [CartController::class, 'deleteCart'])->name('delete_cart');
 
 // Payment Route
-Route::get('/my-cart', [TransactionController::class, 'create'])->name('payment');
-Route::get('/my-cart/payment', [TransactionController::class, 'create'])->name('create_payment');
+Route::get('/payment/soon', [TransactionController::class, 'index'])->name('payment');
+Route::get('/payment', [TransactionController::class, 'create'])->name('create_payment');

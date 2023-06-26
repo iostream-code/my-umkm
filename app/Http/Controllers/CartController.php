@@ -40,6 +40,15 @@ class CartController extends Controller
             ]);
         }
 
+        $carts = Cart::where('user_id', Auth::id())->get();
+
+        return view('cart.cart', compact('carts'));
+    }
+
+    public function deleteCart(Cart $cart)
+    {
+        $cart->delete();
+
         return Redirect::route('cart');
     }
 }
