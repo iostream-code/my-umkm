@@ -30,18 +30,18 @@ class StoreController extends Controller
             $stores = Store::all();
 
             return view('users.visitor.stores', compact('stores'));
-        } else {
+        } elseif (Auth::user()->role == 'seller') {
             $store = Store::where('user_id', Auth::id())->get()->first();
             if (isset($store)) {
                 $products = Product::where('store_id', $store->id)->get();
                 return view('store.my_store', compact('store', 'products'));
             } else
                 return view('store.my_store', compact('store'));
+        } else {
+            $stores = Store::all();
+
+            return view('store.stores', compact('stores'));
         }
-
-        // $stores = Store::all();
-
-        // return view('users.visitor.stores', compact('stores'));
     }
 
     public function createStore()
