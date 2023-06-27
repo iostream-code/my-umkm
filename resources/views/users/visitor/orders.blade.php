@@ -10,7 +10,6 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Store</th>
                         <th scope="col">Status</th>
                         <th scope="col">Payment Receipt</th>
                         <th scope="col">Action</th>
@@ -22,17 +21,26 @@
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $order->user->name }}</td>
                             <td>{{ $order->user->email }}</td>
-                            <td>{{ $order->store->name }}</td>
-                            <td>{{ $order->is_paid }}</td>
-                            <td>-</td>
+                            <td>
+                                @if ($order->is_paid)
+                                    <span class="badge text-bg-success">Paid</span>
+                                @else
+                                    <span class="badge text-bg-danger">unpaid</span>
+                                @endif
+                            </td>
+                            <td>
+                                @isset($order->payment_receipt)
+                                    <a href="#">view file</a>
+                                @endisset
+                            </td>
                             <td>
                                 <div class="d-flex flex-row gap-2">
-                                    <form action="" method="GET">
+                                    <form action="{{ route('detail_order', $order) }}" method="GET">
                                         @csrf
                                         <button type="submit" class="btn btn-primary btn-sm"><i
                                                 class="bi bi-search"></i></button>
                                     </form>
-                                    <form action="" method="POST">
+                                    <form action="{{ route('delete_order', $order) }}" method="POST">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger btn-sm"><i

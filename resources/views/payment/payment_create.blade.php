@@ -47,17 +47,10 @@
                         <div class="d-flex flex-row justify-content-between align-items-start gap-2">
                             <div class="col-12">
                                 <div class="row">
-                                    <form action="{{ route('payment') }}" method="get">
+                                    <form action="{{ route('checkout') }}" method="post">
                                         @csrf
-                                        <h6><strong>Payment Method</strong></h6>
+                                        {{-- <h6><strong>Payment Method</strong></h6>
                                         <div class="d-flex flex-row gap-4 mb-4">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="payment_method"
-                                                    id="payment_method1" value="0">
-                                                <label class="form-check-label" for="payment_method1">
-                                                    Cash on Delivery
-                                                </label>
-                                            </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="payment_method"
                                                     id="payment_method2" value="1">
@@ -65,8 +58,7 @@
                                                     Transfer Bank
                                                 </label>
                                             </div>
-                                        </div>
-                                        <h6><strong>Data Penerima</strong></h6>
+                                        </div> --}}
                                         <div class="mb-3">
                                             <label class="form-label">Nama Penerima</label>
                                             <input type="text" name="name" class="form-control" placeholder="Nama Panggilan">

@@ -45,10 +45,18 @@ class CartController extends Controller
         return view('cart.cart', compact('carts'));
     }
 
+    public function showCart()
+    {
+        $user_id = Auth::id();
+        $carts = Cart::where('user_id', $user_id)->get();
+
+        return view('cart.cart', compact('carts'));
+    }
+
     public function deleteCart(Cart $cart)
     {
         $cart->delete();
 
-        return Redirect::route('cart');
+        return Redirect::route('stores');
     }
 }
