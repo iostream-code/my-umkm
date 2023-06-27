@@ -38,7 +38,7 @@
                         </td>
                         <td>
                             <div class="d-flex flex-row gap-2">
-                                <form action="#" method="GET">
+                                <form action="{{ route('detail_order', $order) }}" method="GET">
                                     @csrf
                                     <button type="submit" class="btn btn-primary btn-sm"><i
                                             class="bi bi-search"></i></button>
@@ -49,7 +49,7 @@
                                     <button type="submit" class="btn btn-danger btn-sm"><i
                                             class="bi bi-trash"></i></button>
                                 </form>
-                                <form action="" method="post">
+                                <form action="{{ route('confirm_payment', $order) }}" method="post">
                                     @csrf
                                     <button class="btn btn-success btn-sm" type="submit">
                                         <i class="bi bi-check-circle-fill"></i>

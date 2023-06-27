@@ -59,6 +59,8 @@ Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 Route::get('/order/create', [OrderController::class, 'create'])->name('create_order');
 Route::get('/order/{order}', [OrderController::class, 'show'])->name('detail_order');
 Route::delete('/order/{order}/delete', [OrderController::class, 'delete'])->name('delete_order');
+Route::post('/order/{order}/pay', [OrderController::class, 'submitPayment'])->name('submit_payment');
+Route::post('/order/{order}/confirm', [OrderController::class, 'confirmPayment'])->name('confirm_payment');
 
 // Cart Route
 Route::get('/my-cart', [CartController::class, 'showCart'])->name('show_cart');

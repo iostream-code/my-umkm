@@ -29,7 +29,7 @@
                 @endforeach
             </tbody>
         </table>
-        @if ($order->is_paid == false && $order->payment_receipt == null)
+        {{-- @if ($order->is_paid == false && $order->payment_receipt == null)
             <form action="{{ route('submit_payment', $order) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
@@ -39,6 +39,6 @@
 
                 <button class="btn btn-primary" type="submit">Upload</button>
             </form>
-        @endif
+        @endif --}}
     </div>
 @endsection
