@@ -54,10 +54,14 @@ Route::get('/user/{user}/edit', [UserController::class, 'editUser'])->name('edit
 Route::delete('/user/{user}/delete', [UserController::class, 'deleteUser'])->name('delete_user');
 
 // Order Route
+Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 Route::get('/order/create', [OrderController::class, 'create'])->name('create_order');
+Route::get('/order/{order}', [OrderController::class, 'show'])->name('detail_order');
+Route::delete('/order/{order}/delete', [OrderController::class, 'delete'])->name('delete_order');
 
 // Cart Route
+Route::get('/my-cart', [CartController::class, 'showCart'])->name('show_cart');
 Route::get('/my-cart/{cart}', [CartController::class, 'index'])->name('cart');
 Route::post('/my-cart/{product}', [CartController::class, 'addToCart'])->name('add_to_cart');
 Route::delete('/my-cart/{cart}/delete', [CartController::class, 'deleteCart'])->name('delete_cart');
