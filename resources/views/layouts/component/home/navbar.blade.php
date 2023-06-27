@@ -7,12 +7,16 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#top">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('stores') }}">Store</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('orders') }}">Order</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->is('home*') ? 'active' : '' }}"
+                        aria-current="page" href="{{ route('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->is('store*') ? 'active' : '' }}"
+                        href="{{ route('stores') }}">Store</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->is('order*') ? 'active' : '' }}"
+                        href="{{ route('orders') }}">Order</a></li>
             </ul>
             <form class="d-flex">
-                <button class="btn btn-outline-dark" type="button" onclick="window.location='{{ route('show_cart') }}'">
+                <button class="btn btn-outline-dark" type="button"
+                    onclick="window.location='{{ route('show_cart') }}'">
                     <i class="bi-cart-fill me-1"></i>
                     My Cart
                 </button>
@@ -26,7 +30,7 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="#">My Cart</a></li>
+                        <li><a class="dropdown-item" href="{{ route('show_cart') }}">My Cart</a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf

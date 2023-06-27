@@ -23,14 +23,14 @@
                             <td>{{ $order->user->email }}</td>
                             <td>
                                 @if ($order->is_paid)
-                                    <span class="badge text-bg-success">Paid</span>
+                                    <span class="badge text-bg-success">Done</span>
                                 @else
-                                    <span class="badge text-bg-danger">unpaid</span>
+                                    <span class="badge text-bg-danger">Unpaid</span>
                                 @endif
                             </td>
                             <td>
                                 @isset($order->payment_receipt)
-                                    <a href="#">view file</a>
+                                    <a href="{{ url('storage/' . $order->payment_receipt) }}">view file</a>
                                 @endisset
                             </td>
                             <td>
@@ -38,7 +38,7 @@
                                     <form action="{{ route('detail_order', $order) }}" method="GET">
                                         @csrf
                                         <button type="submit" class="btn btn-primary btn-sm"><i
-                                                class="bi bi-search"></i></button>
+                                                class="bi bi-file-earmark-plus-fill"></i></button>
                                     </form>
                                     <form action="{{ route('delete_order', $order) }}" method="POST">
                                         @csrf
