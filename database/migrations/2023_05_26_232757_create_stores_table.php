@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email')->uniqe();
             $table->string('picture')->nullable();
             $table->string('location');
+            $table->string('no_rek');
             $table->timestamps();
         });
     }
