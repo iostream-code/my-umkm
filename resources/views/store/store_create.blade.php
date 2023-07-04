@@ -26,6 +26,10 @@
                         <input type="text" class="form-control" name="no_rek">
                     </div>
                     <div class="mb-3">
+                        <label for="bank" class="form-label">Nama Bank</label>
+                        <input type="text" class="form-control" name="bank">
+                    </div>
+                    <div class="mb-3">
                         <label for="picture" class="form-label">Banner</label>
                         <input type="file" class="form-control" name="picture">
                     </div>

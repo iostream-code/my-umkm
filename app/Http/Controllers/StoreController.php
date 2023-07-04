@@ -70,7 +70,8 @@ class StoreController extends Controller
             'email' => $request->email,
             'picture' => $path,
             'location' => $request->location,
-            'no_rek' => $request->no_rek
+            'no_rek' => $request->no_rek,
+            'bank' => $request->bank,
         ]);
 
         return Redirect::route('stores');
@@ -96,6 +97,7 @@ class StoreController extends Controller
             'picture' => 'required',
             'location' => 'required',
             'no_rek' => 'required|numeric',
+            'bank' => 'required',
         ]);
 
         $file = $request->file('picture');
@@ -108,7 +110,8 @@ class StoreController extends Controller
             'email' => $request->email,
             'picture' => $path,
             'location' => $request->location,
-            'no_rek' => $request->no_rek
+            'no_rek' => $request->no_rek,
+            'bank' => $request->bank,
         ]);
 
         return Redirect::route('stores');
