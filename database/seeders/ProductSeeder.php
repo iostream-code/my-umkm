@@ -33,7 +33,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => '1',
                 'name' => 'Gorengan Mie',
-                'price' => '10500',
+                'price' => '1500',
                 'description' => 'Gorengan spesial dengan isian mie',
                 'image' => '',
                 'stock' => '800'
