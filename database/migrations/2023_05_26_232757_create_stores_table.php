@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('picture')->nullable();
             $table->string('location');
             $table->string('no_rek');
+            $table->string('bank');
             $table->timestamps();
         });
     }

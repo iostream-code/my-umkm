@@ -21,6 +21,7 @@ class Store extends Model
         'picture',
         'location',
         'no_rek',
+        'bank',
     ];
 
     public function user()

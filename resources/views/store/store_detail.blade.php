@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        {{ $store->name }} - {{ $store->no_rek }}
+                        {{ $store->name }} - {{ $store->no_rek }} ({{ $store->bank }})
                         @if (Auth::user()->seller && Auth::id() == $store->user_id)
                             <div class="btn-group">
                                 <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-bs-toggle="dropdown"
