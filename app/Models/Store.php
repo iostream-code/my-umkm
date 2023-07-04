@@ -19,7 +19,8 @@ class Store extends Model
         'name',
         'email',
         'picture',
-        'location'
+        'location',
+        'no_rek',
     ];
 
     public function user()

@@ -22,17 +22,13 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
-                                            <h6><strong>Available Card</strong></h6>
-                                            <p>112678356766 (mandiri)</p>
+                                            <h6><strong>Bagaiamana melakukan pembayaran?</strong></h6>
+                                            <p>Pastikan Anda mengetahui no. rekening toko tempat Anda belanja</p>
                                         </div>
                                         <div class="row">
-                                            <h6><strong>How to Payment?</strong></h6>
-                                            <p>
-                                                (1) Choose the payment method there are available<br>(2) Fill the blank form
-                                                under
-                                                the payment method choice<br>(3) Submit payment<br>(4) Upload payment
-                                                receipt
-                                            </p>
+                                            <a href="{{ route('stores') }}">
+                                                <h6><strong>Klik disini!</strong></h6>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -61,15 +57,18 @@
                                         </div> --}}
                                         <div class="mb-3">
                                             <label class="form-label">Nama Penerima</label>
-                                            <input type="text" name="name" class="form-control" placeholder="Nama Panggilan">
+                                            <input type="text" name="name" class="form-control"
+                                                placeholder="Nama Panggilan">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Alamat Rumah</label>
-                                            <input type="text" name="address" class="form-control" placeholder="Alamat pada Gmaps">
+                                            <input type="text" name="address" class="form-control"
+                                                placeholder="Alamat pada Gmaps">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Nomor Telepon</label>
-                                            <input type="text" name="phone" class="form-control" placeholder="Nomor Aktif">
+                                            <input type="text" name="phone" class="form-control"
+                                                placeholder="Nomor Aktif">
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-sm">Checkout</button>
                                     </form>

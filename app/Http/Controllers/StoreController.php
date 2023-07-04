@@ -55,7 +55,8 @@ class StoreController extends Controller
             'name' => 'required',
             'email' => 'required',
             'picture' => 'required',
-            'location' => 'required'
+            'location' => 'required',
+            'no_rek' => 'required|numeric',
         ]);
 
         $file = $request->file('picture');
@@ -68,7 +69,8 @@ class StoreController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'picture' => $path,
-            'location' => $request->location
+            'location' => $request->location,
+            'no_rek' => $request->no_rek
         ]);
 
         return Redirect::route('stores');
@@ -86,25 +88,27 @@ class StoreController extends Controller
         return view('store.store_edit', compact('store'));
     }
 
-    public function updateStore(Store $store, Request $req)
+    public function updateStore(Store $store, Request $request)
     {
-        $req->validate([
+        $request->validate([
             'name' => 'required',
             'email' => 'required',
             'picture' => 'required',
-            'location' => 'required'
+            'location' => 'required',
+            'no_rek' => 'required|numeric',
         ]);
 
-        $file = $req->file('picture');
-        $path = time() . '_' . $req->name . '.' . $file->getClientOriginalExtension();
+        $file = $request->file('picture');
+        $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
 
         Storage::disk('local')->put('public/' . $path, file_get_contents($file));
 
         $store->update([
-            'name' => $req->name,
-            'email' => $req->email,
+            'name' => $request->name,
+            'email' => $request->email,
             'picture' => $path,
-            'location' => $req->location
+            'location' => $request->location,
+            'no_rek' => $request->no_rek
         ]);
 
         return Redirect::route('stores');
