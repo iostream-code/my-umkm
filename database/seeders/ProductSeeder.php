@@ -62,6 +62,30 @@ class ProductSeeder extends Seeder
                 'image' => '',
                 'stock' => '20'
             ],
+            [
+                'store_id' => '3',
+                'name' => 'Penyetan Telor',
+                'price' => '10000',
+                'description' => 'Penyetan komplit lauk telor ceplok',
+                'image' => '',
+                'stock' => '50'
+            ],
+            [
+                'store_id' => '3',
+                'name' => 'Penyetan Ayam',
+                'price' => '12000',
+                'description' => 'Penyetan komplit lauk ayam kampung',
+                'image' => '',
+                'stock' => '20'
+            ],
+            [
+                'store_id' => '3',
+                'name' => 'Penyetan Lele',
+                'price' => '12000',
+                'description' => 'Penyetan komplit lauk ikan lele',
+                'image' => '',
+                'stock' => '30'
+            ],
         ];
         Product::insert($products);
     }

@@ -54,7 +54,6 @@ class StoreController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
             'picture' => 'required',
             'location' => 'required'
         ]);
@@ -68,7 +67,6 @@ class StoreController extends Controller
             'user_id' => Auth::id(),
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
             'picture' => $path,
             'location' => $request->location
         ]);

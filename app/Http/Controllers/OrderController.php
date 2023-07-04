@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\User;
 use App\Models\Order;
+use App\Models\Store;
+
 use App\Models\Payment;
 use App\Models\Product;
-
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,14 +19,18 @@ class OrderController extends Controller
 {
     public function index()
     {
-
         $orders = Order::all();
         $order = Order::where('user_id', Auth::id())->get();
 
-        if (Auth::user()->role == 'visitor')
-            return view('users.visitor.orders', compact('order'));
+        $store = Store::where('user_id', Auth::id())->first();
 
-        return view('order.orders', compact('orders'));
+        if (Auth::user()->role != 'visitor') {
+            $transactions = Transaction::where('store_id', $store->id)->get();
+
+            return view('order.orders', compact('transactions'));
+        }
+
+        return view('users.visitor.orders', compact('order'));
     }
 
     public function checkout(Request $request)
@@ -32,9 +38,8 @@ class OrderController extends Controller
         $user_id = Auth::id();
         $cart = Cart::where('user_id', $user_id)->get();
 
-        if ($cart == null) {
+        if ($cart == null)
             return Redirect::back();
-        }
 
         $order = Order::create([
             'user_id' => $user_id,
@@ -50,12 +55,14 @@ class OrderController extends Controller
         foreach ($cart as $cart) {
 
             $product = Product::find($cart->product_id);
+            $store = Store::where('id', $product->store_id)->first();
 
             $product->update([
                 'stock' => $product->stock - $cart->amount,
             ]);
 
             Transaction::create([
+                'store_id' => $store->id,
                 'payment_id' => $payment->id,
                 'order_id' => $order->id,
                 'product_id' => $cart->product_id,
