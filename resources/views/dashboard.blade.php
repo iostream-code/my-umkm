@@ -70,12 +70,14 @@
                     <div class="card h-100 shadow border-0">
                         <img class="card-img-top" src="{{ asset('assets/img/store-banner-1.jpg') }}" alt="" />
                         <div class="card-body p-4">
-                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
+                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">Makanan</div>
                             <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                <h5 class="card-title mb-3">Blog post title</h5>
+                                <h5 class="card-title mb-3">Bakso Mas Roy</h5>
                             </a>
-                            <p class="card-text mb-0">Some quick example text to build on the card title and make
-                                up the bulk of the card's content.</p>
+                            <p>
+                                Jika Anda mencari hidangan bakso yang lezat, kenyal, dan menggugah selera, datanglah
+                                ke tempat kami. Kami siap menyajikan pengalaman kuliner yang memuaskan dan memanjakan lidah
+                                Anda dengan dagangan bakso yang istimewa.</p>
                         </div>
                         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                             <div class="d-flex align-items-end justify-content-between">
@@ -83,7 +85,7 @@
                                     <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d"
                                         alt="..." />
                                     <div class="small">
-                                        <div class="fw-bold">Kelly Rowan</div>
+                                        <div class="fw-bold">Mas Roy</div>
                                         <div class="text-muted">March 12, 2023 &middot; 6 min read</div>
                                     </div>
                                 </div>
@@ -95,13 +97,13 @@
                     <div class="card h-100 shadow border-0">
                         <img class="card-img-top" src="{{ asset('assets/img/store-banner-2.jpg') }}" alt="" />
                         <div class="card-body p-4">
-                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">Media</div>
+                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">Jajanan</div>
                             <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                <h5 class="card-title mb-3">Another blog post title</h5>
+                                <h5 class="card-title mb-3">Martabak</h5>
                             </a>
-                            <p class="card-text mb-0">This text is a bit longer to illustrate the adaptive height
-                                of each card. Some quick example text to build on the card title and make up the
-                                bulk of the card's content.</p>
+                            <p class="card-text mb-0">Jika Anda mencari hidangan martabak yang lezat, renyah, dan
+                                menggugah selera, datanglah ke tempat kami. Kami siap menyajikan pengalaman kuliner yang
+                                memuaskan dan memanjakan lidah Anda dengan dagangan martabak yang istimewa.</p>
                         </div>
                         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                             <div class="d-flex align-items-end justify-content-between">
@@ -109,7 +111,7 @@
                                     <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d"
                                         alt="..." />
                                     <div class="small">
-                                        <div class="fw-bold">Josiah Barclay</div>
+                                        <div class="fw-bold">Siti</div>
                                         <div class="text-muted">March 23, 2023 &middot; 4 min read</div>
                                     </div>
                                 </div>
@@ -121,13 +123,13 @@
                     <div class="card h-100 shadow border-0">
                         <img class="card-img-top" src="{{ asset('assets/img/store-banner-3.jpg') }}" alt="" />
                         <div class="card-body p-4">
-                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
+                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">Makanan</div>
                             <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                <h5 class="card-title mb-3">The last blog post title is a little bit longer than
-                                    the others</h5>
+                                <h5 class="card-title mb-3">Penyetan Carkecor</h5>
                             </a>
-                            <p class="card-text mb-0">Some more quick example text to build on the card title and
-                                make up the bulk of the card's content.</p>
+                            <p class="card-text mb-0">Jika Anda mencari hidangan pedas yang lezat dan menggugah selera,
+                                datanglah ke tempat kami. Kami siap menyajikan hidangan penyetan yang memuaskan dan
+                                memanjakan lidah Anda dengan cita rasa pedas yang tak terlupakan.</p>
                         </div>
                         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                             <div class="d-flex align-items-end justify-content-between">
@@ -135,7 +137,7 @@
                                     <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d"
                                         alt="..." />
                                     <div class="small">
-                                        <div class="fw-bold">Evelyn Martinez</div>
+                                        <div class="fw-bold">Mas Oni</div>
                                         <div class="text-muted">April 2, 2023 &middot; 10 min read</div>
                                     </div>
                                 </div>

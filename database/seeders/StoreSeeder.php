@@ -37,6 +37,15 @@ class StoreSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
+            [
+                'user_id' => '4',
+                'name' => 'Penyetan Carkecor',
+                'email' => 'penyetan@gmail.com',
+                'picture' => '',
+                'location' => 'Bendul Merisi Jaya',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
         ];
         Store::insert($stores);
     }
