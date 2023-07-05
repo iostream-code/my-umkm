@@ -57,6 +57,7 @@ class StoreController extends Controller
             'picture' => 'required',
             'location' => 'required',
             'no_rek' => 'required|numeric',
+            'bank' => 'required'
         ]);
 
         $file = $request->file('picture');
@@ -96,7 +97,7 @@ class StoreController extends Controller
             'email' => 'required',
             'picture' => 'required',
             'location' => 'required',
-            'no_rek' => 'required|numeric',
+            'no_rek' => 'required',
             'bank' => 'required',
         ]);
 
