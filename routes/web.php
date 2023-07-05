@@ -44,7 +44,7 @@ Route::get('/store/create', [StoreController::class, 'createStore'])->name('crea
 Route::post('/store/regist', [StoreController::class, 'registStore'])->name('regist_store');
 Route::get('/store/{store}', [StoreController::class, 'detailStore'])->name('detail_store');
 Route::get('/store/{store}/edit', [StoreController::class, 'editStore'])->name('edit_store');
-Route::patch('/store/{store}/edit/update', [StoreController::class, 'updateStore'])->name('update_store');
+Route::patch('/store/{store}/edit', [StoreController::class, 'updateStore'])->name('update_store');
 Route::delete('/store/{store}/delete', [StoreController::class, 'deleteStore'])->name('delete_store');
 
 // Users Route

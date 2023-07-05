@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Static Navigation - SB Admin</title>
+    <title>Admin Pages</title>
 
     <link href="{{ asset('assets/css/admin.css') }}" rel="stylesheet" />
 
