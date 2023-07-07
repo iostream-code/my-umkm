@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('receiver');
             $table->string('address');
             $table->string('phone');
+            $table->boolean('delivery')->default(true);
             $table->timestamps();
         });
     }

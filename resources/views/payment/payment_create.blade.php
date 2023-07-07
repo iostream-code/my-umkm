@@ -45,16 +45,6 @@
                                 <div class="row">
                                     <form action="{{ route('checkout') }}" method="post">
                                         @csrf
-                                        {{-- <h6><strong>Payment Method</strong></h6>
-                                        <div class="d-flex flex-row gap-4 mb-4">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="payment_method"
-                                                    id="payment_method2" value="1">
-                                                <label class="form-check-label" for="payment_method2">
-                                                    Transfer Bank
-                                                </label>
-                                            </div>
-                                        </div> --}}
                                         <div class="mb-3">
                                             <label class="form-label">Nama Penerima</label>
                                             <input type="text" name="name" class="form-control"
@@ -69,6 +59,14 @@
                                             <label class="form-label">Nomor Telepon</label>
                                             <input type="text" name="phone" class="form-control"
                                                 placeholder="Nomor Aktif">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Pengiriman</label>
+                                            <select name="delivery" class="form-select" aria-label="Pilih Metode Pengiriman">
+                                                <option selected>-- Silahkan Pilih --</option>
+                                                <option value="true">Ambil di Toko</option>
+                                                <option value="false">Kirim ke Rumah</option>
+                                            </select>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-sm">Checkout</button>
                                     </form>

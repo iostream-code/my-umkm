@@ -9,7 +9,6 @@
                     <tr class="table-dark">
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Email</th>
                         <th scope="col">Status</th>
                         <th scope="col">Payment Receipt</th>
                         <th scope="col">Action</th>
@@ -20,7 +19,6 @@
                         <tr class="table-light">
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $order->user->name }}</td>
-                            <td>{{ $order->user->email }}</td>
                             <td>
                                 @if ($order->is_paid)
                                     <span class="badge text-bg-success">Done</span>

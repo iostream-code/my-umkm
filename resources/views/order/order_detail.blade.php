@@ -11,9 +11,10 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Product</th>
+                    <th scope="col">Alamat</th>
+                    <th scope="col">Payment</th>
                     <th scope="col">Amount</th>
                 </tr>
             </thead>
@@ -21,9 +22,10 @@
                 @foreach ($order->transactions as $transaction)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $order->id }}</td>
-                        <td>{{ $order->user->name }}</td>
+                        <td>{{ $transaction->payment->receiver }}</td>
                         <td>{{ $transaction->product->name }}</td>
+                        <td>{{ $transaction->payment->address }}</td>
+                        <td>{{ $transaction->payment->is_transfer ? 'Transafer' : 'COD' }}</td>
                         <td>{{ $transaction->amount }}</td>
                     </tr>
                 @endforeach

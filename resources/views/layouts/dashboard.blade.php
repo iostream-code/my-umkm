@@ -10,7 +10,9 @@
     <title>My UMKM - Bendul Merisi</title>
 
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo.png') }}" />
+    {{-- <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo.png') }}" /> --}}
+    <link href="{{ asset('assets/img/logo.png') }}" rel="icon">
+    <link href="{{ asset('assets/img/logo.png') }}" rel="apple-touch-icon">
 
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
@@ -23,10 +25,11 @@
     <main class="flex-shrink-0">
         @include('layouts.component.dashboard.navbar')
         @yield('content')
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="{{ asset('assets/js/home.js') }}"></script>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{{ asset('assets/js/home.js') }}"></script>
+    </main>
 </body>
 
 </html>

@@ -151,8 +151,8 @@
                 <div
                     class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
                     <div class="mb-4 mb-xl-0">
-                        <div class="fs-3 fw-bold text-white">Warna baru untuk memulai usaha.</div>
-                        <div class="text-white-50">Buat akun baru untuk merasakan bisnis UMKM warga Bendul Merisi.</div>
+                        <div class="fs-3 fw-bold text-white">Experience Homemade Perfection.</div>
+                        <div class="text-white-50">Experience the nuances of growing a home business with ease and reliability</div>
                     </div>
                 </div>
             </aside>
