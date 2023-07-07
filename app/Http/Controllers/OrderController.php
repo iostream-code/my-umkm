@@ -50,6 +50,7 @@ class OrderController extends Controller
             'receiver' => $request->name,
             'address' => $request->address,
             'phone' => $request->phone,
+            'dellivery' => $request->delivery
         ]);
 
         foreach ($cart as $cart) {

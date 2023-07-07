@@ -15,6 +15,7 @@ class Payment extends Model
         'receiver',
         'address',
         'phone',
+        'delivery'
     ];
 
     public function transaction()
