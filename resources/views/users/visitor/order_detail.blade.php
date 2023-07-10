@@ -11,6 +11,8 @@
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Product</th>
+                        <th scope="col">Payment</th>
+                        <th scope="col">Delivery</th>
                         <th scope="col">Amount</th>
                     </tr>
                 </thead>
@@ -21,6 +23,8 @@
                             <td>{{ $order->id }}</td>
                             <td>{{ $order->user->name }}</td>
                             <td>{{ $transaction->product->name }}</td>
+                            <td>{{ $transaction->payment->is_transfer ? 'Transfer' : 'CoD' }}</td>
+                            <td>{{ $transaction->payment->delivery ? 'Diantar' : 'Ambil di toko' }}</td>
                             <td>{{ $transaction->amount }}</td>
                         </tr>
                     @endforeach

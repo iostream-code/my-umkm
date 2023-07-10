@@ -64,8 +64,8 @@
                                             <label class="form-label">Pengiriman</label>
                                             <select name="delivery" class="form-select" aria-label="Pilih Metode Pengiriman">
                                                 <option selected>-- Silahkan Pilih --</option>
-                                                <option value="true">Ambil di Toko</option>
-                                                <option value="false">Kirim ke Rumah</option>
+                                                <option value="false">Ambil di Toko</option>
+                                                <option value="true">Kirim ke Rumah</option>
                                             </select>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-sm">Checkout</button>

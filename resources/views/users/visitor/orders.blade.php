@@ -36,7 +36,7 @@
                                     <form action="{{ route('detail_order', $order) }}" method="GET">
                                         @csrf
                                         <button type="submit" class="btn btn-primary btn-sm"><i
-                                                class="bi bi-file-earmark-plus-fill"></i></button>
+                                                class="bi bi-search"></i></button>
                                     </form>
                                     <form action="{{ route('delete_order', $order) }}" method="POST">
                                         @csrf
