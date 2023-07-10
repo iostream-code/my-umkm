@@ -15,6 +15,7 @@
                     <th scope="col">Product</th>
                     <th scope="col">Alamat</th>
                     <th scope="col">Payment</th>
+                    <th scope="col">Pengiriman</th>
                     <th scope="col">Amount</th>
                 </tr>
             </thead>
@@ -25,22 +26,12 @@
                         <td>{{ $transaction->payment->receiver }}</td>
                         <td>{{ $transaction->product->name }}</td>
                         <td>{{ $transaction->payment->address }}</td>
-                        <td>{{ $transaction->payment->is_transfer ? 'Transafer' : 'COD' }}</td>
+                        <td><span class="badge text-bg-info">{{ $transaction->payment->is_transfer ? 'Transafer' : 'COD' }}</span></td>
+                        <td>{{ $transaction->payment->delivery ? 'Diantar' : 'Ambil di toko' }}</td>
                         <td>{{ $transaction->amount }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        {{-- @if ($order->is_paid == false && $order->payment_receipt == null)
-            <form action="{{ route('submit_payment', $order) }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="mb-3">
-                    <label class="form-label" for="payment_receipt">Upload Payement Receipt</label>
-                    <input class="form-control" type="file" name="payment_receipt" id="payment_receipt">
-                </div>
-
-                <button class="btn btn-primary" type="submit">Upload</button>
-            </form>
-        @endif --}}
     </div>
 @endsection
