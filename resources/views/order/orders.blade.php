@@ -33,7 +33,7 @@
                         </td>
                         <td>
                             @isset($transaction->order->payment_receipt)
-                                <a href="{{ url('storage/' . $order->payment_receipt) }}">view file</a>
+                                <a href="{{ url('storage/' . $transaction->order->payment_receipt) }}">view file</a>
                             @endisset
                         </td>
                         <td>
