@@ -2,6 +2,12 @@
 
 Aplikasi manajemen bisnis & marketplace sederhana untuk UMKM berbasis **Laravel 12**. Pengguna dapat membuka toko, memasarkan produk, dan memproses pesanan dalam satu aplikasi.
 
+## Tampilan
+
+| Login | Register |
+|:---:|:---:|
+| ![Login](docs/screenshots/myumkm-login.png) | ![Register](docs/screenshots/myumkm-register.png) |
+
 ## Fitur
 
 - **Autentikasi** — registrasi & login (Laravel UI + Bootstrap 5)
