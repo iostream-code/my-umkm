@@ -1,29 +1,38 @@
-# 🏪 My UMKM
+# 🧺 MyUMKM
 
-Aplikasi manajemen bisnis & marketplace sederhana untuk UMKM berbasis **Laravel 12**. Pengguna dapat membuka toko, memasarkan produk, dan memproses pesanan dalam satu aplikasi.
+Marketplace sederhana **dari UMKM, untuk kita semua** — berbasis **Laravel 12**. Setiap orang bisa belanja, dan setiap pelaku usaha bisa **buka toko gratis dalam satu menit**. Didesain *anti-ribet*: tanpa istilah teknis, tombol besar, bahasa sehari-hari, dan nuansa hangat yang mengundang belanja.
 
 ## Tampilan
 
-| Login | Register |
+| Beranda (etalase langsung) | Detail Produk |
 |:---:|:---:|
-| ![Login](docs/screenshots/myumkm-login.png) | ![Register](docs/screenshots/myumkm-register.png) |
+| ![Beranda](docs/screenshots/umkm-beranda.png) | ![Produk](docs/screenshots/umkm-produk.png) |
+
+| Halaman Toko | Keranjang (per toko) |
+|:---:|:---:|
+| ![Toko](docs/screenshots/umkm-toko.png) | ![Keranjang](docs/screenshots/umkm-keranjang.png) |
+
+| Dasbor "Toko Saya" |
+|:---:|
+| ![Toko Saya](docs/screenshots/umkm-toko-saya.png) |
 
 ## Fitur
 
-- **Autentikasi** — registrasi & login (Laravel UI + Bootstrap 5)
-- **Toko (Store)** — setiap pengguna dapat membuka dan mengelola tokonya
-- **Produk** — CRUD produk per toko
-- **Keranjang (Cart)** — tambah/hapus produk sebelum checkout
-- **Pesanan (Order)** — pembuatan dan pelacakan pesanan
-- **Transaksi & Pembayaran** — pencatatan transaksi dan status pembayaran
-- **Dashboard** — ringkasan aktivitas toko
+**Pembeli**
+- Beranda = etalase: pencarian besar, chip kategori, tombol "+ Keranjang" langsung di kartu produk
+- Keranjang otomatis **dikelompokkan per toko**; checkout per toko agar pembayaran langsung ke penjual
+- Checkout atomik (stok dikunci & dikurangi dalam DB transaction, harga di-snapshot)
+- Bayar via transfer ke rekening toko → unggah bukti (otomatis **WebP**, disk privat ber-otorisasi)
+- Lacak status pesanan: menunggu pembayaran → konfirmasi → diproses → dikirim → selesai
+
+**Penjual ("Toko Saya")**
+- **Buka Toko Gratis**: satu form sederhana (nama, lokasi, rekening) — langsung bisa jualan
+- Satu dasbor untuk semuanya: statistik, pasang/ubah produk (foto otomatis WebP), pesanan masuk, konfirmasi pembayaran, pengaturan toko
+- Tidak bisa membeli produk toko sendiri; hanya pemilik toko yang bisa mengubah status pesanannya (teruji)
 
 ## Tech Stack
 
-- Laravel 12 (PHP ≥ 8.2)
-- MySQL
-- Bootstrap 5 + Bootstrap Icons
-- Vite
+Laravel 12 (PHP ≥ 8.2) · MySQL · Bootstrap 5 (tema hangat oranye) · Vite
 
 ## Instalasi
 
@@ -35,14 +44,18 @@ npm install && npm run build
 
 cp .env.example .env
 php artisan key:generate
-# sesuaikan koneksi database (DB_DATABASE, DB_USERNAME, DB_PASSWORD) di .env
+php artisan storage:link
+# sesuaikan koneksi database di .env
 
-php artisan migrate
+php artisan migrate --seed
 php artisan serve
 ```
 
-Buka http://localhost:8000
+**Akun demo** (password `password123`):
+`siti@demo.test` (Warung Bu Siti) · `budi@demo.test` (Kriya Kayu) · `rina@demo.test` (Kopi Nusantara) · `andi@demo.test` (pembeli)
 
 ## Riwayat
 
-Dibangun tahun 2023 dengan Laravel 10; dipugar ke **Laravel 12** (Oktober 2026) — dependensi diperbarui, kompatibel PHP 8.2–8.5, migrasi & test terverifikasi.
+- 2023 — dibangun dengan Laravel 10
+- Okt 2026 — dipugar ke Laravel 12
+- Okt 2026 — **dirombak total**: tema merakyat oranye, beranda etalase, buka toko 1 menit, checkout per toko dengan stok atomik, bukti bayar WebP privat, dasbor penjual terpadu, 8 test otomatis
