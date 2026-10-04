@@ -1,49 +1,37 @@
-@extends('layouts.auth')
+@extends('layouts.app')
+
+@section('title', 'Masuk — MyUMKM')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-5">
-                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                    <div class="card-header">
-                        <h3 class="text-center font-weight-light my-4">Login</h3>
-                    </div>
-                    <div class="card-body">
-                        <form action="{{ route('login') }}" method="post">
-                            @csrf
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com"
-                                    @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
-                                    required autocomplete="email" autofocus />
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <label for="email">Email address</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="password" type="password" placeholder="Password"
-                                    @error('password') is-invalid @enderror" name="password" required
-                                    autocomplete="current-password" />
-                                <label for="password">Password</label>
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="card-footer text-center py-3">
-                        <div class="small"><a href="{{ route('register') }}">Belum punya akun? Yuk daftar!</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="container" style="max-width: 440px">
+    <div class="text-center mb-4">
+        <span class="fs-1">🧺</span>
+        <h1 class="h3 fw-bolder">Selamat datang kembali!</h1>
+        <p class="text-muted">Masuk untuk lanjut belanja atau mengurus tokomu.</p>
     </div>
+
+    <form method="POST" action="{{ route('login') }}" class="card p-4">
+        @csrf
+        <div class="mb-3">
+            <label class="form-label fw-bold" for="email">Email</label>
+            <input id="email" type="email" name="email" value="{{ old('email') }}"
+                class="form-control rounded-3 @error('email') is-invalid @enderror" required autofocus>
+            @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-bold" for="password">Password</label>
+            <input id="password" type="password" name="password"
+                class="form-control rounded-3 @error('password') is-invalid @enderror" required>
+            @error('password')<div class="invalid-feedback">{{ $message }}</div>@enderror
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+            <label class="form-check-label" for="remember">Ingat saya</label>
+        </div>
+        <button class="btn btn-um btn-lg w-100 mb-2">Masuk</button>
+        <p class="text-center small mb-0">Belum punya akun?
+            <a href="{{ route('register') }}" class="text-um fw-bold">Daftar gratis</a>
+        </p>
+    </form>
+</div>
 @endsection

@@ -2,40 +2,64 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Order;
-
-use App\Models\Product;
-use App\Models\Transaction;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 class Store extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'user_id',
-        'name',
-        'email',
-        'picture',
-        'location',
-        'no_rek',
-        'bank',
+        'user_id', 'name', 'slug', 'email', 'picture', 'location',
+        'description', 'no_rek', 'bank',
     ];
 
-    public function user()
+    protected static function booted(): void
+    {
+        static::creating(function (Store $store) {
+            $store->slug ??= static::uniqueSlug($store->name);
+        });
+    }
+
+    public static function uniqueSlug(string $name): string
+    {
+        $base = Str::slug($name);
+        $slug = $base;
+        $i = 2;
+        while (static::where('slug', $slug)->exists()) {
+            $slug = "{$base}-{$i}";
+            $i++;
+        }
+        return $slug;
+    }
+
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function products()
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class);
     }
 
-    public function transactions()
+    public function orders(): HasMany
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Order::class);
+    }
+
+    public function getPictureUrlAttribute(): ?string
+    {
+        if (!$this->picture) {
+            return null;
+        }
+        return str_starts_with($this->picture, 'http')
+            ? $this->picture
+            : asset('storage/' . $this->picture);
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 }

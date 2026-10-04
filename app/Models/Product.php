@@ -2,38 +2,56 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-use App\Models\Store;
-use App\Model\Transaction;
-use App\Model\Cart;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
-    use HasFactory;
-
-    protected $fillable = [
-        'store_id',
-        'name',
-        'price',
-        'description',
-        'image',
-        'stock',
+    public const KATEGORI = [
+        'Makanan', 'Minuman', 'Fashion', 'Kerajinan', 'Pertanian', 'Jasa', 'Lainnya',
     ];
 
-    public function store()
+    protected $fillable = [
+        'store_id', 'name', 'slug', 'category', 'price', 'description', 'image', 'stock',
+    ];
+
+    protected static function booted(): void
+    {
+        static::creating(function (Product $product) {
+            $product->slug ??= static::uniqueSlug($product->name);
+        });
+    }
+
+    public static function uniqueSlug(string $name): string
+    {
+        $base = Str::slug($name);
+        $slug = $base;
+        $i = 2;
+        while (static::where('slug', $slug)->exists()) {
+            $slug = "{$base}-{$i}";
+            $i++;
+        }
+        return $slug;
+    }
+
+    public function store(): BelongsTo
     {
         return $this->belongsTo(Store::class);
     }
 
-    public function transactions()
+    public function getImageUrlAttribute(): string
     {
-        return $this->hasMany(Transaction::class);
+        if (!$this->image) {
+            return 'https://placehold.co/640x480/fff3e6/ea580c?text=' . urlencode($this->name);
+        }
+        return str_starts_with($this->image, 'http')
+            ? $this->image
+            : asset('storage/' . $this->image);
     }
 
-    public function carts()
+    public function getRouteKeyName(): string
     {
-        return $this->hasMany(Cart::class);
+        return 'slug';
     }
 }

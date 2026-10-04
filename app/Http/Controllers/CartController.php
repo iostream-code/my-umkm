@@ -3,60 +3,66 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\Payment;
 use App\Models\Product;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $carts = Cart::all();
+        // Dikelompokkan per toko — checkout nanti per toko
+        $carts = Cart::with('product.store')
+            ->where('user_id', Auth::id())
+            ->get()
+            ->groupBy(fn($c) => $c->product->store_id);
 
-        return view('cart.cart', compact('carts'));
+        return view('keranjang', compact('carts'));
     }
 
-    public function addToCart(Product $product, Request $request)
+    public function tambah(Request $req, Product $product)
     {
-        $user_id = Auth::id();
-        $product_id = $product->id;
+        $req->validate(['amount' => 'nullable|integer|min:1']);
+        $jumlah = (int) ($req->amount ?? 1);
 
-        $existing_cart = Cart::where('product_id', $product_id)
-            ->where('user_id', $user_id)
-            ->first();
-
-        if ($existing_cart == null) {
-            $request->validate([
-                'amount' => 'required|gte:1|lte:' . $product->stock
-            ]);
-
-            Cart::create([
-                'user_id' => $user_id,
-                'product_id' => $product_id,
-                'amount' => $request->amount,
-            ]);
+        if ($product->store->user_id === Auth::id()) {
+            return Redirect::back()->with('error', 'Tidak bisa membeli produk toko sendiri.');
         }
 
-        $carts = Cart::where('user_id', Auth::id())->get();
+        $cart = Cart::firstOrNew([
+            'user_id' => Auth::id(),
+            'product_id' => $product->id,
+        ]);
+        $baru = ($cart->amount ?? 0) + $jumlah;
+        if ($baru > $product->stock) {
+            return Redirect::back()->with('error', "Stok {$product->name} tersisa {$product->stock}.");
+        }
+        $cart->amount = $baru;
+        $cart->save();
 
-        return view('cart.cart', compact('carts'));
+        return Redirect::back()->with('success', "{$product->name} masuk keranjang!");
     }
 
-    public function showCart()
+    public function ubah(Request $req, Cart $cart)
     {
-        $user_id = Auth::id();
-        $carts = Cart::where('user_id', $user_id)->get();
+        abort_unless($cart->user_id === Auth::id(), 403);
+        $req->validate(['amount' => 'required|integer|min:1|max:' . $cart->product->stock]);
+        $cart->update(['amount' => $req->amount]);
 
-        return view('cart.cart', compact('carts'));
+        return Redirect::route('keranjang');
     }
 
-    public function deleteCart(Cart $cart)
+    public function hapus(Cart $cart)
     {
+        abort_unless($cart->user_id === Auth::id(), 403);
         $cart->delete();
 
-        return Redirect::route('stores');
+        return Redirect::back()->with('success', 'Dihapus dari keranjang.');
     }
 }

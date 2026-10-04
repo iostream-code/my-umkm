@@ -2,29 +2,53 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-use App\Models\Store;
-use App\Models\Transaction;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
-    use HasFactory;
-
-    protected $fillable = [
-        'user_id',
-        'is_paid',
-        'payment_receipt',
+    public const STATUS = [
+        'menunggu_pembayaran' => ['label' => 'Menunggu Pembayaran', 'warna' => 'warning'],
+        'menunggu_konfirmasi' => ['label' => 'Menunggu Konfirmasi', 'warna' => 'info'],
+        'diproses' => ['label' => 'Diproses', 'warna' => 'primary'],
+        'dikirim' => ['label' => 'Dikirim', 'warna' => 'secondary'],
+        'selesai' => ['label' => 'Selesai', 'warna' => 'success'],
+        'dibatalkan' => ['label' => 'Dibatalkan', 'warna' => 'danger'],
     ];
 
-    public function user()
+    protected $fillable = [
+        'user_id', 'store_id', 'status', 'total', 'recipient_name', 'phone',
+        'address', 'payment_receipt', 'is_paid',
+    ];
+
+    protected function casts(): array
+    {
+        return ['is_paid' => 'boolean'];
+    }
+
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function transactions()
+    public function store(): BelongsTo
+    {
+        return $this->belongsTo(Store::class);
+    }
+
+    public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function getStatusLabelAttribute(): string
+    {
+        return self::STATUS[$this->status]['label'] ?? $this->status;
+    }
+
+    public function getStatusColorAttribute(): string
+    {
+        return self::STATUS[$this->status]['warna'] ?? 'secondary';
     }
 }

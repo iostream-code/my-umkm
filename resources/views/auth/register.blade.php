@@ -1,59 +1,43 @@
-@extends('layouts.auth')
+@extends('layouts.app')
+
+@section('title', 'Daftar — MyUMKM')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7">
-                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                    <div class="card-header">
-                        <h3 class="text-center font-weight-light my-4">Create Account</h3>
-                    </div>
-                    <div class="card-body">
-                        <form action="{{ route('register') }}" method="post">
-                            @csrf
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name"
-                                    @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required
-                                    autocomplete="name" autofocus />
-                                <label for="name">Full name</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com"
-                                    @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
-                                    required autocomplete="email" />
-                                <label for="email">Email address</label>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" id="password" type="password"
-                                            placeholder="Create a password" @error('password') is-invalid @enderror"
-                                            name="password" required autocomplete="new-password" />
-                                        <label for="password">Password</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" id="parrword-confirm" type="password"
-                                            placeholder="Confirm password" name="password_confirmation" required
-                                            autocomplete="new-password" />
-                                        <label for="parrword-confirm">Confirm Password</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-4 mb-0">
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary btn-block">Create
-                                        Account</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="card-footer text-center py-3">
-                        <div class="small"><a href="{{ route('login') }}">Sudah punya akun? Login disini</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="container" style="max-width: 440px">
+    <div class="text-center mb-4">
+        <span class="fs-1">🤝</span>
+        <h1 class="h3 fw-bolder">Gabung MyUMKM</h1>
+        <p class="text-muted">Gratis selamanya — untuk pembeli maupun penjual.</p>
     </div>
+
+    <form method="POST" action="{{ route('register') }}" class="card p-4">
+        @csrf
+        <div class="mb-3">
+            <label class="form-label fw-bold" for="name">Nama Lengkap</label>
+            <input id="name" type="text" name="name" value="{{ old('name') }}"
+                class="form-control rounded-3 @error('name') is-invalid @enderror" required autofocus>
+            @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-bold" for="email">Email</label>
+            <input id="email" type="email" name="email" value="{{ old('email') }}"
+                class="form-control rounded-3 @error('email') is-invalid @enderror" required>
+            @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-bold" for="password">Password</label>
+            <input id="password" type="password" name="password"
+                class="form-control rounded-3 @error('password') is-invalid @enderror" required>
+            @error('password')<div class="invalid-feedback">{{ $message }}</div>@enderror
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold" for="password-confirm">Ulangi Password</label>
+            <input id="password-confirm" type="password" name="password_confirmation" class="form-control rounded-3" required>
+        </div>
+        <button class="btn btn-um btn-lg w-100 mb-2">Daftar Sekarang</button>
+        <p class="text-center small mb-0">Sudah punya akun?
+            <a href="{{ route('login') }}" class="text-um fw-bold">Masuk</a>
+        </p>
+    </form>
+</div>
 @endsection

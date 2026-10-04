@@ -2,42 +2,28 @@
 
 namespace App\Models;
 
-use App\Models\Order;
-use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Transaction extends Model
 {
-    use HasFactory;
-
+    /** Tabel lama tidak memiliki kolom created_at/updated_at. */
     public $timestamps = false;
 
-    protected $fillable = [
-        'store_id',
-        'product_id',
-        'order_id',
-        'payment_id',
-        'amount',
-    ];
+    protected $fillable = ['order_id', 'store_id', 'product_id', 'amount', 'price'];
 
-    public function order()
+    public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
     }
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function payment()
+    public function getSubtotalAttribute(): int
     {
-        return $this->belongsTo(Payment::class);
-    }
-
-    public function stores()
-    {
-        return $this->belongsToMany(Store::class);
+        return $this->amount * $this->price;
     }
 }
